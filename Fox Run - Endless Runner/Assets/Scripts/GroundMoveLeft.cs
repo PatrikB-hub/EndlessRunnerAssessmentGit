@@ -16,7 +16,7 @@ public class GroundMoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 groundPosition = transform.position;
+        Vector3 groundPosition = transform.position;
         groundPosition.x -= groundspeed * Time.deltaTime;
         transform.position = groundPosition;
     }

@@ -7,7 +7,8 @@ public class CameraFollowFoxYAxis : MonoBehaviour
     public GameObject player;
     public GameObject camera;
 
-    public float bottomboundary = -2;
+    public float bottomboundary = -1;
+    public int rasiedCameraPosition = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,8 @@ public class CameraFollowFoxYAxis : MonoBehaviour
         {
             //replace y value of camera with player y value
 
-            Vector2 cameraposition = camera.transform.position;
-            cameraposition.y = player.transform.position.y;
+            Vector3 cameraposition = camera.transform.position;
+            cameraposition.y = player.transform.position.y + rasiedCameraPosition;
             camera.transform.position = cameraposition;
 
         }

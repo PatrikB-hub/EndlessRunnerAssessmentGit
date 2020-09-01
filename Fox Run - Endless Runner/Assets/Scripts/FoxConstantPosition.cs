@@ -22,7 +22,7 @@ public class FoxConstantPosition : MonoBehaviour
         //when fox x-position < -4f move right approaching x=4
         if (transform.position.x < foxgeneralposition)
         {
-            Vector2 playerposition = transform.position;
+            Vector3 playerposition = transform.position;
             playerposition.x += foxreturnspeed * Time.deltaTime;
             transform.position = playerposition;
         }
@@ -30,7 +30,7 @@ public class FoxConstantPosition : MonoBehaviour
         //when fox x-position > -4f move left approaching x=4
         if (transform.position.x > foxgeneralposition)
         {
-            Vector2 playerposition = transform.position;
+            Vector3 playerposition = transform.position;
             playerposition.x -= foxreturnspeed * Time.deltaTime;
             transform.position = playerposition;
         }
