@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollowFoxYAxis : MonoBehaviour
 {
     public GameObject player;
-    public GameObject camera;
+    public GameObject cam;
 
     public float bottomboundary = -1;
     public int rasiedCameraPosition = 2;
@@ -28,9 +28,9 @@ public class CameraFollowFoxYAxis : MonoBehaviour
         {
             //replace y value of camera with player y value
 
-            Vector3 cameraposition = camera.transform.position;
+            Vector3 cameraposition = cam.transform.position;
             cameraposition.y = player.transform.position.y + rasiedCameraPosition;
-            camera.transform.position = cameraposition;
+            cam.transform.position = cameraposition;
 
         }
     }
