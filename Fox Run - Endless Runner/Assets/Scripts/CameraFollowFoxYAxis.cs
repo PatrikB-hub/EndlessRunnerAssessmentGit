@@ -5,33 +5,46 @@ using UnityEngine;
 public class CameraFollowFoxYAxis : MonoBehaviour
 {
     public GameObject player;
-    public GameObject cam;
+    public GameObject menuManager;
 
-    public float bottomboundary = -1;
-    public int rasiedCameraPosition = 2;
+    private int camSpeed = 3;
 
-    // Start is called before the first frame update
+    private MainMenu mainMenu;
+
+    private Vector3 gameMainMenuPosition= new Vector3(0f, -3f, -10f);
+
     void Start()
     {
-        
+        transform.position = gameMainMenuPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //finding player position
-        //Vector2 playerposition = player.transform.position;
-        //Debug.Log(player.transform.position.y);
+        
+        int gameOnOffValue2 = 0;
 
-        //if player pos is less than (bottomboundary), camera y = player y value
-        if (player.transform.position.y < bottomboundary)
+        for (int i = 0; i < 1; i++)
         {
-            //replace y value of camera with player y value
-
-            Vector3 cameraposition = cam.transform.position;
-            cameraposition.y = player.transform.position.y + rasiedCameraPosition;
-            cam.transform.position = cameraposition;
-
+            mainMenu = menuManager.GetComponent<MainMenu>();
+            gameOnOffValue2 = mainMenu.gameOnOff;
         }
+
+        if (gameOnOffValue2 == 1)
+        {
+            Vector3 playerPosition = player.transform.position;
+            playerPosition.x += 2f;
+            playerPosition.y += 2.5f;
+
+            Vector3 camPosition = gameObject.transform.position;
+            camPosition = Vector3.MoveTowards(camPosition, playerPosition, camSpeed * Time.deltaTime);
+            camPosition.z = -10f;
+            gameObject.transform.position = camPosition;
+        }
+
+        if (gameOnOffValue2 == 0)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, gameMainMenuPosition, camSpeed * Time.deltaTime);
+        }
+        
     }
 }

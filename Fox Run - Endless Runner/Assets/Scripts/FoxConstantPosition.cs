@@ -6,33 +6,72 @@ using UnityEngine.UIElements;
 //[RequireComponent(typeof(Rigidbody2D))]
 public class FoxConstantPosition : MonoBehaviour
 {
-    public int foxgeneralposition = -4;
+    private int foxGeneralPosition = -2;
 
-    public float foxreturnspeed = 1f;
+    public float foxReturnSpeed = 1f;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject menuManager;
+    private MainMenu mainMenu;
+
+    private bool foxGeneralPositionStart = false;
+
+    private Vector3 foxRunToWhenStartIsPressedPosition = new Vector3(3.5f, -1.5f, 10f);
+    private Vector3 foxStartingPosition = new Vector3(-2f, -1.5f, 10f);
+
+    private void Start()
     {
-        
+        transform.position = foxStartingPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //when fox x-position < -4f move right approaching x=4
-        if (transform.position.x < foxgeneralposition)
+        int gameOnOffValue1 = 0;
+
+        //assign/link gameOnOffValue1 to menuManager/ gameOnOff value.
+        for (int i = 0; i < 1; i++)
         {
-            Vector3 playerposition = transform.position;
-            playerposition.x += foxreturnspeed * Time.deltaTime;
-            transform.position = playerposition;
+            mainMenu = menuManager.GetComponent<MainMenu>();
+            gameOnOffValue1 = mainMenu.gameOnOff;
         }
 
-        //when fox x-position > -4f move left approaching x=4
-        if (transform.position.x > foxgeneralposition)
+        //when gameOnOffValue1 = 0, fox return to original pos.
+        if (gameOnOffValue1 == 0)
         {
-            Vector3 playerposition = transform.position;
-            playerposition.x -= foxreturnspeed * Time.deltaTime;
-            transform.position = playerposition;
+            foxGeneralPositionStart = false;
+            transform.position = foxStartingPosition;
         }
+
+        //what gameOnOffValue1 = 1, go to foxRunToWhenStartIsPressedPosition, then to 4<x<4.
+        if (gameOnOffValue1 == 1)
+        {
+            if (foxGeneralPositionStart == false)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, foxRunToWhenStartIsPressedPosition, foxReturnSpeed * 5 * Time.deltaTime);
+                if (transform.position.x > 3f)
+                {
+                    foxGeneralPositionStart = true;
+                }
+            }
+
+            if (foxGeneralPositionStart == true)
+            {
+                //when fox x-position < -2f move right approaching x=-2
+                if (transform.position.x < foxGeneralPosition)
+                {
+                    Vector3 playerposition = transform.position;
+                    playerposition.x += foxReturnSpeed * Time.deltaTime;
+                    transform.position = playerposition;
+                }
+
+                //when fox x-position > -2f move left approaching x=-2
+                if (transform.position.x > foxGeneralPosition)
+                {
+                    Vector3 playerposition = transform.position;
+                    playerposition.x -= foxReturnSpeed * Time.deltaTime;
+                    transform.position = playerposition;
+                }
+            }
+        }
+
     }
 }

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlatformGeneration : MonoBehaviour
 {
+    private int randomIndex = 0;
+
     public List<GameObject> PlatformPrefabs;
     public GameObject worldParent;
 
     public GameObject lastPlatform;
     Vector3 plusApproximately24 = new Vector3(23.8f, 0, 0);
 
-    private Vector3 gameStartPlatform1 = new Vector3(-24f, 0f, 0f);
-    private Vector3 gameStartPlatform2 = new Vector3(0f, 0f, 0f);
-    private Vector3 gameStartPlatform3 = new Vector3(24f, 0f, 0f);
+    private Vector3 gameStartPlatform1 = new Vector3(-24f, -1.9f, 10f);
+    private Vector3 gameStartPlatform2 = new Vector3(0f, -1.9f, 10f);
+    private Vector3 gameStartPlatform3 = new Vector3(24f, -1.9f, 10f);
 
     void Start()
     {
@@ -28,7 +30,9 @@ public class PlatformGeneration : MonoBehaviour
     {
         if (lastPlatform.transform.position.x < 24f)
         {
-            GameObject newSpawn = Instantiate(PlatformPrefabs[0], worldParent.transform.position, Quaternion.identity, worldParent.transform);
+            randomIndex = Random.Range(0, PlatformPrefabs.Count);
+
+            GameObject newSpawn = Instantiate(PlatformPrefabs[randomIndex], worldParent.transform.position, Quaternion.identity, worldParent.transform);
 
             newSpawn.transform.position = lastPlatform.transform.position + plusApproximately24;
 
