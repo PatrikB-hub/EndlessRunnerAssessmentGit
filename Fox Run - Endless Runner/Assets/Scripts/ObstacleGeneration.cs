@@ -6,53 +6,68 @@ public class ObstacleGeneration : MonoBehaviour
 {
     private int randomIndex1;
 
-    private string platform1 = "platform01(Clone)";
-
     public List<GameObject> ObstaclePrefabs;
 
     public GameObject obstacleManager;
     public GameObject platformManager;
     private PlatformGeneration platformGeneration;
 
-    GameObject lastPlatform1;
+    private int lastPlatformNumber1 = 0;
 
     public GameObject lastObstacle;
+    public GameObject destroyErrorSaveObject;
 
-    private Vector3 objectPlacePosition = new Vector3(30f, 0f, 10f);
+    private Vector3 objectPlaceAtBottomPosition = new Vector3(40f, -1.7f, 11f);
+    private Vector3 objectPlaceAtTopPosition = new Vector3(40f, 6.2f, 11f);
 
-    // Start is called before the first frame update
     void Start()
     {
+        platformGeneration = platformManager.GetComponent<PlatformGeneration>();
 
         randomIndex1 = Random.Range(0, ObstaclePrefabs.Count);
-        lastObstacle = Instantiate(ObstaclePrefabs[randomIndex1], objectPlacePosition, Quaternion.identity, obstacleManager.transform);
+        //first lastObstacle in game.
+        lastObstacle = Instantiate(ObstaclePrefabs[randomIndex1], objectPlaceAtBottomPosition, Quaternion.identity, obstacleManager.transform);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        GameObject lastPlatform1 = platformGeneration.lastPlatform;
+        // get value of lastPlatformNumber (each frame)
+        lastPlatformNumber1 = platformGeneration.lastPlatformNumber;
 
-        for (int i = 0; i < 1; i++)
+        //if lastPlatformNumber1 = 1st platform, instance a random obstacle from ObsaclePrefabs
+        if (lastPlatformNumber1 == 1)
         {
-            platformGeneration = GetComponent<PlatformGeneration>();
-        }
-
-        //string lastPlatformName = lastPlatform1.name;
-
-        if (lastObstacle.transform.position.x <= 24f)
-        {
-
-            if (lastPlatform1.name == platform1)
+            if (lastObstacle.transform.position.x <= 24f)
             {
                 randomIndex1 = Random.Range(0, ObstaclePrefabs.Count);
 
                 GameObject newObstacle = Instantiate(ObstaclePrefabs[randomIndex1], obstacleManager.transform.position, Quaternion.identity, obstacleManager.transform);
 
-                newObstacle.transform.position = objectPlacePosition;
+                newObstacle.transform.position = objectPlaceAtBottomPosition;
 
                 lastObstacle = newObstacle;
             }
+        }
+
+        //if lastPlatformNumber1 = 3rd platform, instance a random obstacle from ObsaclePrefabs
+        if (lastPlatformNumber1 == 3)
+        {
+            if (lastObstacle.transform.position.x <= 24f)
+            {
+                randomIndex1 = Random.Range(0, ObstaclePrefabs.Count);
+
+                GameObject newObstacle = Instantiate(ObstaclePrefabs[randomIndex1], obstacleManager.transform.position, Quaternion.identity, obstacleManager.transform);
+
+                newObstacle.transform.position = objectPlaceAtTopPosition;
+
+                lastObstacle = newObstacle;
+            }
+        }
+
+        //if there is no objet to reference make lastObstacle = destroyErrorSaveObject
+        if (lastObstacle == null)
+        {
+            lastObstacle = destroyErrorSaveObject;
         }
     }
 }

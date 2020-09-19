@@ -18,6 +18,7 @@ public class GroundMoveLeft : MonoBehaviour
     {
         int gameOnOffValue = 0;
 
+        //find menuManager, get component MainMenu, set gameOnOffValue.
         for (int i = 0; i < 1; i++)
         {
             GameObject menuManager = GameObject.Find("/MenuManager");
@@ -32,6 +33,7 @@ public class GroundMoveLeft : MonoBehaviour
         }
     }
 
+    //platform move left by groundSpeed.
     void GroundMovingLeft()
     {
         Vector3 groundPosition = gameObject.transform.position;

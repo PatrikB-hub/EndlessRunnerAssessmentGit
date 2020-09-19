@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-//[RequireComponent(typeof(Rigidbody2D))]
 public class FoxConstantPosition : MonoBehaviour
 {
     private int foxGeneralPosition = -2;
@@ -38,10 +37,15 @@ public class FoxConstantPosition : MonoBehaviour
         if (gameOnOffValue1 == 0)
         {
             foxGeneralPositionStart = false;
-            transform.position = foxStartingPosition;
+
+            if (transform.position.y < 5)
+            {
+                transform.position = foxStartingPosition;
+            }
+
         }
 
-        //what gameOnOffValue1 = 1, go to foxRunToWhenStartIsPressedPosition, then to 4<x<4.
+        //when gameOnOffValue1 = 1, go to foxRunToWhenStartIsPressedPosition, then to 4<x<4.
         if (gameOnOffValue1 == 1)
         {
             if (foxGeneralPositionStart == false)

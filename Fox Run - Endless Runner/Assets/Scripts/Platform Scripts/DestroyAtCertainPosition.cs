@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class DestroyAtCertainPosition : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
+    // if gameObject.transform.position.x <= 48 destroy it.
     void Update()
     {
         if (gameObject.transform.position.x <= -48f)
