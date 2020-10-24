@@ -69,5 +69,6 @@ public class ObstacleGeneration : MonoBehaviour
         {
             lastObstacle = destroyErrorSaveObject;
         }
+
     }
 }

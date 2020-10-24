@@ -18,15 +18,22 @@ public class MainMenu : MonoBehaviour
     public string highScoreString;
 
     public GameObject platformManager;
-    public GameObject destroyPlatform;
-
+    private GameObject destroyPlatform;
     private int amountOfPlatformsToDestroy;
     private int amountOfPlatformsDestroyed;
+
+    public GameObject obstacleManager;
+    private GameObject destroyObstacle;
+    public int amountOfObstaclesToDestroy;
+    public int amountOfObstaclesDestroyed;
+
 
     private void Start()
     {
         //a number > 4 as there are only ever 4 platforms in play.
         amountOfPlatformsDestroyed = 5;
+        //a number > 8 as there are only ever (< 8) obstacles in play.
+        amountOfObstaclesDestroyed = 8;
     }
 
     private void Update()
@@ -70,7 +77,6 @@ public class MainMenu : MonoBehaviour
         //when back to main menu button is pressed.
         if (restarting == true)
         {
-
             if (amountOfPlatformsDestroyed < amountOfPlatformsToDestroy)
             {
                 //make next platform with "platform" tag = destroyPlatform.
@@ -83,6 +89,20 @@ public class MainMenu : MonoBehaviour
                 //make room for next platform
                 destroyPlatform = null;
                 amountOfPlatformsDestroyed++;
+            }
+
+            if (amountOfObstaclesDestroyed < amountOfObstaclesToDestroy - 1)
+            {
+                //make next obstacle with "platform" tag = destroyObstacle.
+                if (destroyObstacle == null)
+                {
+                    destroyObstacle = GameObject.FindWithTag("obstacle");
+                }
+                //destroy the obstacle next frame
+                Destroy(destroyObstacle);
+                //make room for next obstacle
+                destroyObstacle = null;
+                amountOfObstaclesDestroyed++;
             }
         }
     }
@@ -126,6 +146,10 @@ public class MainMenu : MonoBehaviour
         amountOfPlatformsToDestroy = platformManager.transform.childCount;
         //set destroyed platforms to 0.
         amountOfPlatformsDestroyed = 0;
+        //find how many obstacles to destroy
+        amountOfObstaclesToDestroy = obstacleManager.transform.childCount;
+        //set destroyed obstacles to 0
+        amountOfObstaclesDestroyed = 0;
 
         restarting = true;
 

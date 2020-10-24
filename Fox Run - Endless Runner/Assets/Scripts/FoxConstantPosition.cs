@@ -41,6 +41,7 @@ public class FoxConstantPosition : MonoBehaviour
             if (transform.position.y < 5)
             {
                 transform.position = foxStartingPosition;
+                transform.rotation = Quaternion.identity;
             }
 
         }

@@ -14,8 +14,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
@@ -37,7 +35,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.Text
+    - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -71,23 +69,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11170}
     - Class: 114
-      Script: {instanceID: 11456}
-    - Class: 114
       Script: {instanceID: 11510}
     - Class: 114
       Script: {instanceID: 11690}
     - Class: 114
       Script: {instanceID: 12172}
     - Class: 114
-      Script: {instanceID: 12582}
+      Script: {instanceID: 12580}
+    - Class: 114
+      Script: {instanceID: 12604}
     - Class: 114
       Script: {instanceID: 12606}
-    - Class: 114
-      Script: {instanceID: 12608}
     - Class: 114
       Script: {instanceID: 12740}
     - Class: 114
       Script: {instanceID: 12876}
+    - Class: 114
+      Script: {instanceID: 13018}
     - Class: 114
       Script: {instanceID: 13218}
     - Class: 114
@@ -95,14 +93,12 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13632}
     - Class: 114
-      Script: {instanceID: 13960}
+      Script: {instanceID: 13962}
     - Class: 114
-      Script: {instanceID: 13964}
+      Script: {instanceID: 13966}
     - Class: 114
       Script: {instanceID: 14248}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -349,12 +345,6 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ObstacleTriggerMinusLives
-  - hash:
-      serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -401,6 +391,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AnythingMoveLeft
   - hash:
       serializedVersion: 2
       Hash: 31a4860ac7db586808f3358d847c8422
@@ -463,7 +459,7 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: fa9edf1ec051541cd02787c7cd45fd74
+      Hash: 8424f87cfaf302ada9f5eb198b2acdd2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraFollowFoxYAxis
@@ -535,6 +531,12 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AnythingMovLeft
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -547,22 +549,16 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: f883121c5fded134590527b88a07d7a1
+      Hash: 0ee5cf56280deec97ae775c6c0776cc8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlatformGeneration
   - hash:
       serializedVersion: 2
-      Hash: b28d46e2b599c4fb5f935f80e681b333
+      Hash: e751e9aafd313c41ef315b321fc99cee
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMenu
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlatformPrefabCreateandDestroy
   - hash:
       serializedVersion: 2
       Hash: df434544c9f7b33d1cc7e635b180d279
