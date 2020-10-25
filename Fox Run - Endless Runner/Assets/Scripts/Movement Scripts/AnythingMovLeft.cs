@@ -22,15 +22,15 @@ public class AnythingMovLeft : MonoBehaviour
 
         if (gameOnOffValue1 == 1)
         {
-            if (transform.position.z == 11.5f)// z-pos of front mountain
+            if (transform.position.z == 11.5f)// global z-pos of front mountain
             {
                 AnythingMovingLeft(7f);//front mountain moves faster than further back mountains(same for next 2)
             }
-            if (transform.position.z == 12f)// z-pos of middle mountain
+            if (transform.position.z == 12f)// global z-pos of middle mountain
             {
                 AnythingMovingLeft(5f);
             }
-            if (transform.position.z == 13f)// z-pos of back mountain
+            if (transform.position.z == 13f)// global z-pos of back mountain
             {
                 AnythingMovingLeft(3f);
             }

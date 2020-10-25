@@ -6,74 +6,131 @@ public class BackgroundGeneration : MonoBehaviour
 {
     public List<GameObject> backgroundPrefabs;
 
-    private List<GameObject> backgroundMountains = new List<GameObject>();
+    public List<GameObject> backgroundMountainsFront = new List<GameObject>();
+    private GameObject highestFront = null;
+    public List<GameObject> backgroundMountainsMiddle = new List<GameObject>();
+    private GameObject highestMiddle = null;
+    public List<GameObject> backgroundMountainsBack = new List<GameObject>();
+    private GameObject highestBack = null;
 
-    private List<GameObject> backgroundMountainsLessThan30 = new List<GameObject>();
+    private Vector3 plus30 = new Vector3(29.9f, 0, 0);
 
-    private GameObject lowest = null;
+    private GameObject newBackground = null;
 
-    void Start()
+    void Awake()
     {
+        // find first frontbackground add to backgroundMountains
         GameObject firstBackgroundFront = GameObject.Find("/Background/background_front");
-        backgroundMountains.Add(firstBackgroundFront);
+        backgroundMountainsFront.Add(firstBackgroundFront);
+        // find first middlebackground add to backgroundMountains
         GameObject firstBackgroundMiddle = GameObject.Find("/Background/background_middle");
-        backgroundMountains.Add(firstBackgroundMiddle);
+        backgroundMountainsMiddle.Add(firstBackgroundMiddle);
+        // find first backbackground add to backgroundMountains
         GameObject firstBackgroundBack = GameObject.Find("/Background/background_back");
-        backgroundMountains.Add(firstBackgroundBack);
+        backgroundMountainsBack.Add(firstBackgroundBack);
 
     }
 
     void Update()
     {
         BackgroundCheck();
+
+        InstantiateLowest();
     }
 
     private void BackgroundCheck()//check position of background GO's
     {
-        foreach (GameObject item in backgroundMountains)
+        foreach (GameObject item in backgroundMountainsFront)
         {
-            /*
-            if ()
+            if (highestFront == null)
             {
-
+                highestFront = item;
             }
-            */
-            if (item.transform.position.x < 30)
+
+            if (item.transform.position.x > highestFront.transform.position.x)
             {
-                backgroundMountainsLessThan30.Add(item);
+                highestFront = item;
             }
         }
-
-        foreach (GameObject item in backgroundMountainsLessThan30)
+        foreach (GameObject item in backgroundMountainsMiddle)
         {
-            for (int i = 0; i < 1; i++)
+            if (highestMiddle == null)
             {
-                lowest = item;
+                highestMiddle = item;
             }
 
-            if (item.transform.position.x < lowest.transform.position.x)
+            if (item.transform.position.x > highestMiddle.transform.position.x)
             {
-                lowest = item;
+                highestMiddle = item;
             }
         }
+        foreach (GameObject item in backgroundMountainsBack)
+        {
+            if (highestBack == null)
+            {
+                highestBack = item;
+            }
 
-        Instantiate(backgroundPrefabs[0], (Vector3)lowest.transform.position, Quaternion.identity, transform);
+            if (item.transform.position.x > highestBack.transform.position.x)
+            {
+                highestBack = item;
+            }
+        }
 
     }
 
 
+    private void InstantiateLowest()
+    {
+        if (highestFront != null)
+        {
+            if (highestFront.transform.position.x <= 30f)
+            {
+                newBackground = Instantiate(backgroundPrefabs[0], (Vector3)highestFront.transform.position, Quaternion.identity, transform);
+                newBackground.transform.position += plus30;
+                backgroundMountainsFront.Add(newBackground);
 
+                newBackground = null;
+                highestFront = null;
 
-    //check if any backgroundMountains gameobjects are !> than 30
+            }
+        }
 
-    // true = check z position, instantiate correct prefab, copy tranform position 
+        if (highestMiddle != null)
+        {
+            if (highestMiddle.transform.position.x <= 30f)
+            {
+                newBackground = Instantiate(backgroundPrefabs[1], (Vector3)highestMiddle.transform.position, Quaternion.identity, transform);
+                newBackground.transform.position += plus30;
+                backgroundMountainsMiddle.Add(newBackground);
+
+                newBackground = null;
+                highestMiddle = null;
+
+            }
+        }
+
+        if (highestBack != null)
+        {
+            if (highestBack.transform.position.x <= 30f)
+            {
+                newBackground = Instantiate(backgroundPrefabs[2], (Vector3)highestBack.transform.position, Quaternion.identity, transform);
+                newBackground.transform.position += plus30;
+                backgroundMountainsBack.Add(newBackground);
+
+                newBackground = null;
+                highestBack = null;
+
+            }
+        }
+    }
 
 
     //find positions of any objects that are greater than 30
     //assign them to a new list
-    //find object with lowest y value
+    //find object with lowest x value
     //assign a variable to this object
     //obtain z position
-    //if this object has a y value <= 30 then instantiate correct prefab depending on z value
+    //if this object has a x value <= 30 then instantiate correct prefab depending on z value
     //
 }
