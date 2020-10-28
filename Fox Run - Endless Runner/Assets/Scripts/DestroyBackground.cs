@@ -7,6 +7,8 @@ public class DestroyBackground : MonoBehaviour
     private GameObject thisGO = null;
     private BackgroundGeneration backgroundGeneration;
 
+    private int destroyPoint = -50;
+
     private void Start()
     {
         thisGO = gameObject;
@@ -20,7 +22,7 @@ public class DestroyBackground : MonoBehaviour
 
     private void destroyBackgroundGO()
     {
-        if (transform.position.x < -30f)
+        if (transform.position.x < destroyPoint)
         {
             if (backgroundGeneration.backgroundMountainsFront.Contains(gameObject))
             {

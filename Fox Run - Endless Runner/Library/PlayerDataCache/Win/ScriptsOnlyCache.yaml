@@ -1,12 +1,16 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AnythingMovLeft
+    - BackgroundGeneration
     - CameraFollowFoxYAxis
     - DestroyAtCertainPosition
+    - DestroyBackground
     - FoxConstantPosition
     - FoxJumpFunction
     - GroundMoveLeft
     - MainMenu
+    - MainMenuScript
     - ObstacleGeneration
     - PlatformGeneration
     - PlayerLives
@@ -14,6 +18,8 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
@@ -21,8 +27,11 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineInspector
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -71,33 +80,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11510}
     - Class: 114
-      Script: {instanceID: 11690}
+      Script: {instanceID: 11560}
     - Class: 114
-      Script: {instanceID: 12172}
+      Script: {instanceID: 11692}
     - Class: 114
-      Script: {instanceID: 12580}
+      Script: {instanceID: 12174}
     - Class: 114
-      Script: {instanceID: 12604}
+      Script: {instanceID: 12582}
     - Class: 114
       Script: {instanceID: 12606}
     - Class: 114
-      Script: {instanceID: 12740}
+      Script: {instanceID: 12608}
     - Class: 114
-      Script: {instanceID: 12876}
+      Script: {instanceID: 12670}
     - Class: 114
-      Script: {instanceID: 13018}
+      Script: {instanceID: 12742}
     - Class: 114
-      Script: {instanceID: 13218}
+      Script: {instanceID: 12878}
     - Class: 114
-      Script: {instanceID: 13488}
+      Script: {instanceID: 13020}
     - Class: 114
-      Script: {instanceID: 13632}
+      Script: {instanceID: 13220}
     - Class: 114
-      Script: {instanceID: 13962}
+      Script: {instanceID: 13490}
     - Class: 114
-      Script: {instanceID: 13966}
+      Script: {instanceID: 13634}
     - Class: 114
-      Script: {instanceID: 14248}
+      Script: {instanceID: 13832}
+    - Class: 114
+      Script: {instanceID: 13964}
+    - Class: 114
+      Script: {instanceID: 13968}
+    - Class: 114
+      Script: {instanceID: 14250}
+    - Class: 114
+      Script: {instanceID: 18634}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -199,6 +216,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.SpriteShape.Runtime.dll
     namespaceName: UnityEngine.U2D
     className: SpriteShapeController
+  - hash:
+      serializedVersion: 2
+      Hash: b8f33aa44afcc36db428a23500d6da8f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BackgroundGeneration
   - hash:
       serializedVersion: 2
       Hash: 234235b9fb07320d11497e08a726cc56
@@ -388,15 +411,15 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Unity.TextMeshPro.dll
-    namespaceName: TMPro
-    className: TMP_SpriteAnimator
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DestroyBackground
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: AnythingMoveLeft
+    assemblyName: Unity.TextMeshPro.dll
+    namespaceName: TMPro
+    className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
       Hash: 31a4860ac7db586808f3358d847c8422
@@ -531,7 +554,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 6ab57c5b155489fed98c106afb406fda
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AnythingMovLeft
@@ -655,6 +678,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainMenuScript
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
