@@ -40,6 +40,7 @@ public class BackgroundGeneration : MonoBehaviour
 
     private void BackgroundCheck()//check position of background GO's
     {
+        //check front mountains, which is furthest to the right
         foreach (GameObject item in backgroundMountainsFront)
         {
             if (highestFront == null)
@@ -52,6 +53,7 @@ public class BackgroundGeneration : MonoBehaviour
                 highestFront = item;
             }
         }
+        //check middle mountains, which is furthest to the right
         foreach (GameObject item in backgroundMountainsMiddle)
         {
             if (highestMiddle == null)
@@ -64,6 +66,7 @@ public class BackgroundGeneration : MonoBehaviour
                 highestMiddle = item;
             }
         }
+        //check back mountains, which is furthest to the right
         foreach (GameObject item in backgroundMountainsBack)
         {
             if (highestBack == null)
@@ -82,8 +85,10 @@ public class BackgroundGeneration : MonoBehaviour
 
     private void InstantiateLowest()
     {
+        //if the highest of front backgroung is less than 30 on x axis then instantiate a new prefab
         if (highestFront != null)
         {
+            // 30 is the spawn point
             if (highestFront.transform.position.x <= 30f)
             {
                 newBackground = Instantiate(backgroundPrefabs[0], (Vector3)highestFront.transform.position, Quaternion.identity, transform);
@@ -124,13 +129,4 @@ public class BackgroundGeneration : MonoBehaviour
             }
         }
     }
-
-
-    //find positions of any objects that are greater than 30
-    //assign them to a new list
-    //find object with lowest x value
-    //assign a variable to this object
-    //obtain z position
-    //if this object has a x value <= 30 then instantiate correct prefab depending on z value
-    //
 }

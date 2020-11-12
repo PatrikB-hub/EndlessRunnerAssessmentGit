@@ -22,6 +22,7 @@ public class DestroyBackground : MonoBehaviour
 
     private void destroyBackgroundGO()
     {
+        //if this gameobject.x is less than the destroy point, check which list it is in, remove it and destroy it.
         if (transform.position.x < destroyPoint)
         {
             if (backgroundGeneration.backgroundMountainsFront.Contains(gameObject))
