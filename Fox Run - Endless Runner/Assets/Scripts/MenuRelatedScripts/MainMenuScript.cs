@@ -9,6 +9,7 @@ public class MainMenuScript : MonoBehaviour
 {
     #region Variables
 
+    [Header("Options Related")]
     [SerializeField, Tooltip("fullscreen toggle")]
     private Toggle fullscreenToggle;
     [SerializeField, Tooltip("Game Quailty Dropdown")]
