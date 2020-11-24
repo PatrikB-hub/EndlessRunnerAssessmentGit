@@ -18,14 +18,26 @@ public class PlayerLives : MonoBehaviour
 
     public GameObject youLoseMenu;
 
+    private Animator playerAnimator;
+    private float whenHitStartTime;
+    private float waitTime = 0.8f;
 
     void Start()
     {
+        playerAnimator = GetComponent<Animator>();
         mainMenu = menuManager.GetComponent<MainMenu>();
     }
 
     void Update()
     {
+        if (!(Time.time < whenHitStartTime + waitTime))
+        {
+            if (playerAnimator.GetBool("wasHit") == true)
+            {
+                playerAnimator.SetBool("wasHit", false);
+            }
+        }
+
         // update gameOnOff2 value each frame
         gameOnOff2 = mainMenu.gameOnOff;
 
@@ -56,9 +68,7 @@ public class PlayerLives : MonoBehaviour
                 life3.SetActive(true);
                 i++;
             }
-
         }
-
     }
 
     //if player collides with object with tag "obstacle", -1 from amountOfLives.
@@ -66,6 +76,9 @@ public class PlayerLives : MonoBehaviour
     {
         if (collision.gameObject.tag == "obstacle")
         {
+            playerAnimator.SetBool("wasHit", true);
+            whenHitStartTime = Time.time;
+
             amountOfLives--;
 
             if (amountOfLives == 2)
@@ -82,6 +95,7 @@ public class PlayerLives : MonoBehaviour
             {
                 life1.SetActive(false);
             }
+
         }
     }
 }

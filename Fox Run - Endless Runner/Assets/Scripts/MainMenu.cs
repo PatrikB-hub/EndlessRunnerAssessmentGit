@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
 
-    public bool restarting = false;
+    public bool restarting = true;
 
+    //game off = 0, game on = 1
     public int gameOnOff = 0;
 
     public GameObject playScreen;

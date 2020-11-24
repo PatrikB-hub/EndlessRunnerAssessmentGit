@@ -17,8 +17,11 @@ public class FoxConstantPosition : MonoBehaviour
     private Vector3 foxRunToWhenStartIsPressedPosition = new Vector3(3.5f, -1.5f, 10f);
     private Vector3 foxStartingPosition = new Vector3(-2f, -1.5f, 10f);
 
+    private Animator playerAnimator;
+
     private void Start()
     {
+        playerAnimator = GetComponent<Animator>();
         transform.position = foxStartingPosition;
     }
 
@@ -36,6 +39,11 @@ public class FoxConstantPosition : MonoBehaviour
         //when gameOnOffValue1 = 0, fox return to original pos.
         if (gameOnOffValue1 == 0)
         {
+            if (playerAnimator.GetBool("isRunning") != false)
+            {
+                playerAnimator.SetBool("isRunning", false);
+            }
+
             foxGeneralPositionStart = false;
 
             if (transform.position.y < 5)
@@ -43,12 +51,16 @@ public class FoxConstantPosition : MonoBehaviour
                 transform.position = foxStartingPosition;
                 transform.rotation = Quaternion.identity;
             }
-
         }
 
         //when gameOnOffValue1 = 1, go to foxRunToWhenStartIsPressedPosition, then to 4<x<4.
         if (gameOnOffValue1 == 1)
         {
+            if (playerAnimator.GetBool("isRunning") != true)
+            {
+                playerAnimator.SetBool("isRunning", true);
+            }
+
             if (foxGeneralPositionStart == false)
             {
                 transform.position = Vector3.MoveTowards(transform.position, foxRunToWhenStartIsPressedPosition, foxReturnSpeed * 5 * Time.deltaTime);
